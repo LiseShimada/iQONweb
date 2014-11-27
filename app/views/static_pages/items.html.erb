@@ -1,0 +1,45 @@
+
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/application.css">
+</head>
+
+<h1>Search</h1>
+<% if user_signed_in? %>
+
+<% @posts.each do |post| %>
+<div class="item">
+<%= post.date %> | <%= post.subject %>  | <%= post.like_count %> |<%= form_for(post, url: like_collection_path(post)) do |f| %><%= button_to("like", :class => "btn btn-default like-button") %><% end %><br> 
+<div class="itemimg">
+<div class="overlay">
+<div class="overlay-top"></div>
+<div class="overlay-bottom">
+	<h4>
+	<center><% title = post.title %>
+	<% if title == nil then %>
+	<%= post.subject %>
+	<% else %>
+	<%= post.title %>
+	<% end %>
+	</center></h4>
+	<p><% comment = post.comment %>
+	<% if comment == nil then%>
+	no comments
+	<% else %>
+	<%= post.comment %>
+	<% end %></p>
+</div></div>
+<%= image_tag(post.picture) %>
+</div><br>
+<% post.tags.each do |tag| %>
+	<%= link_to tag.name, controller: :static_pages, action: :search, tag_id: tag.id %>,
+<% end %>
+</div>
+
+
+<% end %> 
+ 
+<% else %>
+ <%= link_to "Sign in", new_user_session_path %><br>
+<% end%>
+
+

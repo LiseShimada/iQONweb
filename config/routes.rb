@@ -5,6 +5,8 @@ IQONweb::Application.routes.draw do
   root to: "static_pages#home"
   get 'userpage', to: "static_pages#userpage"
   get 'search', to:"static_pages#search"
+  get 'item', to:"static_pages#items"
+  patch 'posts/like/:id',  :to => 'posts#like',  :as => :like_collection
   
   #get 'posts', to:"posts_path#posts"
   # The priority is based upon order of creation: first created -> highest priority.

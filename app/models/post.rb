@@ -7,10 +7,6 @@ class Post < ActiveRecord::Base
 
 	before_save :fix_tags
 
-#テストここから
-	has_reputation :likes, source: :user, aggregated_by: :sum
-#テストここまで
-
 	def tag_invalid(attributed)
 		attributed['name'].empty?
 	end
