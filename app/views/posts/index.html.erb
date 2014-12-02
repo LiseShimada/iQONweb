@@ -5,6 +5,7 @@
     <tr>
       <th>Date</th>
       <th>Subject</th>
+      <th>Title</th>
       <th>Tags</th>
       <th>Action</th>
     </tr>
@@ -14,7 +15,8 @@
     <% @posts.each do |post| %>
       <tr>
         <td width="100"><%= post.date %></td>
-        <td width="100"><%= post.subject %></td>
+        <td width="70"><%= post.subject %></td>
+        <td width="300"><%= post.title %></td>
         <td width="400"><% post.tags.each do |tag| %><%= tag.name %> | <% end %></td>
         <td><%= link_to 'Show', post %> | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
